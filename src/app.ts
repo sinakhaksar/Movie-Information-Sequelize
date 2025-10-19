@@ -1,6 +1,7 @@
 import express from "express";
 import "dotenv/config";
 import sequelize from "./database.js";
+import Movie from "./entites/movie.js";
 const app = express();
 
 const PORT = process.env.PORT || 3001;
@@ -20,6 +21,6 @@ app.listen(PORT, async () => {
 		await Movie.sync({ alter: true });
 		console.log("DB is updated");
 	} catch (err) {
-		console.log("ERROR initalizing db");
+		console.log("ERROR initalizing db", err);
 	}
 });
