@@ -1,6 +1,6 @@
 import Router from "express";
 
-import movieFinder from "../controller.ts/movie.controller.js";
+import movieFinder from "../controller/movie.controller.js";
 
 const router = Router();
 
