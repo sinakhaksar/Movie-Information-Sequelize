@@ -1,6 +1,6 @@
 import express from "express";
 import "dotenv/config";
-
+import sequelize from "./database.js";
 const app = express();
 
 const PORT = process.env.PORT || 3001;
@@ -11,6 +11,12 @@ app.use((req, res, next) => {
 	next();
 });
 
-app.listen(PORT, () => {
+app.listen(PORT, async () => {
 	console.log(`server running on localhost:${PORT}`);
+	try {
+		await sequelize.authenticate();
+		console.log("DB connected");
+	} catch (err) {
+		console.log("ERROR initalizing db");
+	}
 });
