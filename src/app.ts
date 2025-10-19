@@ -1,7 +1,10 @@
 import express from "express";
 import "dotenv/config";
 import sequelize from "./database.js";
+
 import Movie from "./entites/movie.js";
+import movieRouter from "./routes/movie.routes.js";
+
 const app = express();
 
 const PORT = process.env.PORT || 3001;
@@ -11,6 +14,8 @@ app.use((req, res, next) => {
 	console.log(req.method, req.path);
 	next();
 });
+
+app.use("/movies", movieRouter);
 
 app.listen(PORT, async () => {
 	console.log(`server running on localhost:${PORT}`);
