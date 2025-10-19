@@ -16,6 +16,9 @@ app.listen(PORT, async () => {
 	try {
 		await sequelize.authenticate();
 		console.log("DB connected");
+
+		await Movie.sync({ alter: true });
+		console.log("DB is updated");
 	} catch (err) {
 		console.log("ERROR initalizing db");
 	}
